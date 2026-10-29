@@ -100,4 +100,9 @@ public class EmployeeRestController  {
         return dbEmployee;
     }
 
+    @PostMapping("/employees/bulk")
+    public List<Employee> addEmployees(@RequestBody List<Employee> employees) {
+        return employeeService.saveAll(employees);
+    }
+
 }

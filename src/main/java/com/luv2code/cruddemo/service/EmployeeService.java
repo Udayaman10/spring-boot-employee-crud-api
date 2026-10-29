@@ -6,12 +6,14 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    public List<Employee> findAll();
+     List<Employee> findAll();
 
-    public Employee findById(int Id);
+     Employee findById(int Id);
 
-    public Employee save(Employee theEmployee);
+     Employee save(Employee theEmployee);
 
-    public void deleteById (int theId);
+     void deleteById (int theId);
 
+
+     List<Employee> saveAll(List<Employee> employess);
 }
