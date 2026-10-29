@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Employee Directory</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Employee Directory</h1>
+    <p id="status" class="status wait" role="status"><i></i><span>Connecting to the server…</span></p>
+  </div>
+  <div class="actions">
+    <button class="btn ghost" id="bulkBtn">Add many</button>
+    <button class="btn" id="addBtn">Add employee</button>
+  </div>
+</header>
+<main>
+  <div class="bar">
+    <input id="q" type="search" placeholder="Search by name or email" aria-label="Search employees">
+    <select id="sort" aria-label="Sort employees">
+      <option value="id">Sort by ID</option>
+      <option value="firstName">Sort by first name</option>
+      <option value="lastName">Sort by last name</option>
+      <option value="email">Sort by email</option>
+    </select>
+    <span id="count" class="count"></span>
+  </div>
+  <div class="wrap">
+    <table>
+      <thead><tr><th>Employee</th><th>Email</th><th>ID</th><th><span class="sr">Actions</span></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div id="empty" class="empty" hidden><p></p></div>
+  </div>
+</main>
+
+<dialog id="formDlg">
+  <form id="form">
+    <h2 id="formTitle">Add employee</h2>
+    <label>First name<input id="fn" required maxlength="60" autocomplete="off"></label>
+    <label>Last name<input id="ln" required maxlength="60" autocomplete="off"></label>
+    <label>Email<input id="em" type="email" required maxlength="120" autocomplete="off"></label>
+    <div class="foot"><button type="button" class="btn ghost" data-close>Cancel</button><button class="btn">Save</button></div>
+  </form>
+</dialog>
+
+<dialog id="bulkDlg">
+  <form id="bulkForm">
+    <h2>Add many employees</h2>
+    <p class="hint">Paste a JSON array. Each item needs firstName, lastName and email. All are saved together or none are.</p>
+    <textarea id="bulkText" rows="9" spellcheck="false" placeholder='[{"firstName":"Aarav","lastName":"Sharma","email":"aarav@example.com"}]'></textarea>
+    <div class="foot"><button type="button" class="btn ghost" data-close>Cancel</button><button class="btn">Add all</button></div>
+  </form>
+</dialog>
+
+<dialog id="delDlg">
+  <form id="delForm">
+    <h2>Delete employee?</h2>
+    <p id="delName" class="hint"></p>
+    <div class="foot"><button type="button" class="btn ghost" data-close>Keep</button><button class="btn danger">Delete</button></div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
